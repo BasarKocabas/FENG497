@@ -18,7 +18,7 @@ if (!API_KEY) {
   console.warn("Warning: GEMINI_API_KEY is not set in .env file.");
 }
 const genAI = new GoogleGenerativeAI(API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" }); // Updated to model mentioned by user
+const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" }); // Updated to correct available model version
 
 app.post('/api/chat', async (req, res) => {
   const { message, studentId } = req.body;
@@ -54,7 +54,7 @@ ${JSON.stringify(universityKnowledge)}
 "${message}"
 
 === INSTRUCTIONS ===
-- Respond in English by default, even if the context contains Turkish terms.
+- Respond in the language of the user question.
 - Answer based ONLY on the provided student context and knowledge base.
 - If asked "How to" do something (like register), use the "steps" from the Knowledge Base.
 - If the user asks about something not in the context, politely say you don't have that information.
