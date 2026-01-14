@@ -1,0 +1,116 @@
+{
+  "academic_calendar_2025_2026": {
+    "fall_semester": {
+      "registration": "September 16 - 18, 2025",
+      "add_drop": "September 25 - October 1, 2025",
+      "midterms": "November 2025",
+      "finals": "January 2026"
+    },
+    "spring_semester": {
+      "registration": "February 10 - 12, 2026",
+      "add_drop": "February 23 - 24, 2026",
+      "midterms": "April 2026",
+      "finals": "June 2026"
+    }
+  },
+  "how_to_view_grades": {
+    "title": "Viewing Grades (Not Listesi)",
+    "steps": [
+      "Navigate to 'Ders ve Dönem İşlemleri' (Course & Term Operations) > 'Not Listesi' (Grade List).",
+      "Select the relevant Term (Dönem) from the filter.",
+      "The screen lists your Midterm, Final, and Make-up grades for each course.",
+      "Click the 'Statistics' button to see class averages and grade distributions."
+    ]
+  },
+  "how_to_view_gpa": {
+    "title": "Viewing GPA and Term Averages",
+    "steps": [
+      "Navigate to 'Ders ve Dönem İşlemleri' (Course & Term Operations) > 'Dönem Ortalamaları' (Term Averages).",
+      "This screen displays your Taken Course Count, Total Credits, Total ECTS, Term Average, and General Average (AGNO/GPA).",
+      "Graphs at the bottom of the page visualize your GPA trends over semesters."
+    ]
+  },
+  "how_to_view_transcript": {
+    "title": "Viewing Transcript",
+    "steps": [
+      "Navigate to 'Ders ve Dönem İşlemleri' > 'Transkript'.",
+      "This page displays all courses taken, grouped by semester, with Grades, Credits, and ECTS.",
+      "Click the 'Yazdır' (Print) button to download or print your official transcript.",
+      "For a 'What-If' scenario, go to 'Transkript Senaryosu' to simulate how new grades would affect your GPA."
+    ]
+  },
+  "how_to_check_attendance": {
+    "title": "Checking Attendance (Devamsızlık Durumu)",
+    "steps": [
+      "Navigate to 'Ders ve Dönem İşlemleri' > 'Devamsızlık Durumu'.",
+      "Select the term to view attendance records.",
+      "Click the 'i' (info) icon under 'Ders Devam Kuralları' to see the specific theory/practice attendance requirements for a course."
+    ]
+  },
+  "course_registration_procedure": {
+    "title": "Course Registration (Ders Kayıt)",
+    "steps": [
+      "Log in and go to 'Ders ve Dönem İşlemleri' > 'Ders Kayıt'.",
+      "Click the '+' button next to a course in the curriculum list to add it.",
+      "If a course has a blinking '!' icon, it has not been opened by the department yet.",
+      "To drop a selected course, click the 'Trash Can' icon.",
+      "To replace a course (count-as), click the 'Link/Switch' icon.",
+      "Click 'Kontrol Et' (Check) to validate your list against rules.",
+      "Finally, click 'Kesinleştir' (Finalize) to send it for Advisor Approval."
+    ],
+    "statuses": [
+      "Kesinleştirildi: You have finalized your choices.",
+      "Kesinleştirilmedi: You have NOT finalized yet.",
+      "Onaylandı: Advisor approved.",
+      "Onaylanmadı: Advisor rejected."
+    ]
+  },
+  "exam_schedule": {
+    "title": "Exam Schedule (Sınav Takvimi)",
+    "steps": [
+      "Navigate to 'Genel İşlemler' (General Operations) > 'Sınav Takvimi'.",
+      "Filter by the current term.",
+      "A blinking '!' icon indicates a special note regarding that specific exam."
+    ]
+  },
+  "document_request": {
+    "title": "Requesting Documents",
+    "steps": [
+      "Navigate to 'Kullanıcı İşlemleri' > 'Belge Talebi'.",
+      "Select the document type (e.g., Student Certificate) from 'Belge Türü'.",
+      "You can track the status of your request on this same screen."
+    ]
+  },
+  "password_change_rules": {
+    "title": "Password Rules",
+    "rules": [
+      "Must contain at least one uppercase letter.",
+      "Must contain at least one number.",
+      "Numbers or letters cannot be sequential (e.g., 123, abc).",
+      "Characters cannot repeat more than twice (e.g., cannot use 'AAA')."
+    ]
+  },
+  "personal_info_page": {
+    "title": "Personal Information (Özlük Bilgileri)",
+    "description": "View and update your contact details.",
+    "fields": [
+      "Address",
+      "Phone Number",
+      "Email",
+      "City/District"
+    ],
+    "steps": [
+      "Navigate to 'Genel İşlemler' > 'Özlük Bilgileri'.",
+      "Update your address or phone number if changed.",
+      "Click 'Kaydet' to save changes."
+    ]
+  },
+  "opened_courses_page": {
+    "title": "Opened Department Courses (Açılan Bölüm Dersleri)",
+    "description": "List of courses available in the current semester.",
+    "steps": [
+      "Navigate to 'Genel İşlemler' > 'Açılan Bölüm Dersleri'.",
+      "View the list of courses with their Class, Theory (T), Practice (U), Lab (L), and ECTS details."
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+
+// Function to send user query to the AI Backend
+const sendMessage = async () => {
+if (!input.trim()) return;
+const userMessage
+=
+input;
+setMessages (prev => [...prev, { sender: 'user', text: userMessage }]); setInput("");
+setIsLoading (true);
+try {
+// POST request to the OBS AI Assistant API
+const response = await fetch('http://localhost:3001/api/chat', method: 'POST',
+headers: {'Content-Type': 'application/json' },
+body: JSON.stringify({-
+})
+});
+message: userMessage,
+studentId: "20210602291" // Hardcoded for demo
+const data = await response.json();
+// Display the AI's response
+setMessages (prev => [...prev, { sender: 'bot', text: data.answer }]);
+} catch (error) {
+setMessages (prev => [...prev, { sender: 'bot', text: "Sorry, I can't connect to the server right now." }]); } finally {
+setIsLoading (false);
+
+
+// Load the Knowledge Bases
+const studentData = require('./data.json');
+// Private Student Data (Grades, Schedule)
+const universityKnowledge = require('./knowledge.json'); // Public University Rules (Calendars, Regulations)
+const app = express(); app.use(express.json()); app.use(cors());
+// Initialize Gemini with the working API Key
+const API_KEY = process.env.GEMINI_API_KEY;
+const genAI = new GoogleGenerativeAI (API_KEY);
+// UPDATED: Using the 'gemini-flash-latest' alias which is most likely to have quota
+const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+app.post('/api/chat', async (req, res) => {
+const { message, studentId } = req.body;
+if (IstudentId) {
+}
+return res.status(400).json({ answer: "Error: Student ID is required." });
+// Step 1: Retrieval (RAG)
+// Fetch the specific context for the logged-in student
+const student = studentData[studentId);
+if (Istudent) {
+}
+return res.json({ answer: "I could not find a student record with that ID." });
+// The 'student' object now contains:
+//
+-
+Name: Matthew Ozan Eanes
+// - GPA: 3.42
+//
+-
+-
+Courses: [SE 302, CS 401...]
+Exams: [SE 302 Final on Jan 20...]
+
+
+const prompt =
+You are the "OBS Assistant" for Izmir University of Economics (IUE). You are helpful, polite, and concise.
+=== CURRENT STUDENT CONTEXT ===
+Name: ${student.name}
+Department: ${student.department}
+GPA: ${student.gpa}
+Courses: ${JSON.stringify(student.courses)}
+Upcoming Exams: ${JSON.stringify(student.upcoming_exams)}
+Announcements:
+${JSON.stringify(student.announcements)}
+=== UNIVERSITY KNOWLEDGE BASE (PROCEDURES)
+$ { JSON.stringify (universityKnowledge)}
+=== USER QUESTION ===
+"${message}"
+=== INSTRUCTIONS
+-
+-
+Answer based ONLY on the provided student context and knowledge base.
+If asked "How to" do something (like register), use the "steps" from the knowledge Base.
+If the user asks about something not in the context, politely say you don't have that information. If asked for "Grades", mention the GPA.
+If asked for "Schedule" or "Classes", list the courses with times and classrooms.
+Keep responses brief and natural (chat-like).
+
+
+// Step 3: Generation
+// Send the enriched prompt to the AI model in the cloud try
+const result = await model.generateContent (prompt);
+const response = await result.response;
+const text = response.text();
+res.json({ answer: text });
+catch (error) {
+// Error handling (e.g. Quota Exceeded)
+console.error("Gemini API Error:", error);
+if (error.status === 429) {
+res.status(429).json({ answer: "The AI is currently busy (quota reached). Please try again in a minute." });
+} else {
+res.status(500).json({ answer: "I'm having trouble connecting to the AI service right now." });

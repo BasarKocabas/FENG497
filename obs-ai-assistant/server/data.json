@@ -1,0 +1,46 @@
+{
+  "20220601048": {
+    "name": "BAŞAR KOCABAŞ",
+    "department": "Yazılım Mühendisliği",
+    "gpa": 2.71,
+    "current_term": "2025 - 2026 Akademik Yılı Güz Dönemi",
+    "advisor": "Prof. Dr. Sersin KUMOVA METİN",
+    "courses": [
+      { "code": "SE 320", "name": "Bilgisayar Oyunlarına Giriş", "credit": 3, "ects": 5, "grade": "Mevcut" },
+      { "code": "SE 354", "name": "Bilgisayar Oyunlarında Yapay Zeka", "credit": 3, "ects": 5, "grade": "Mevcut" },
+      { "code": "SE 431", "name": "Bilgisayar Oyunlarında 3B Modelleme", "credit": 3, "ects": 5, "grade": "Mevcut" },
+      { "code": "SE 480", "name": "İstemci-Taraflı Skript Dilleri", "credit": 3, "ects": 5, "grade": "Mevcut" },
+      { "code": "SE 380", "name": "Mobil Uygulama Geliştirme", "credit": 3, "ects": 5, "grade": "Mevcut" }
+    ],
+    "transcript": {
+      "2022_2023_Fall": [
+        { "code": "ENG 101", "name": "İngilizce de Akademik Beceriler I", "grade": "AA", "ects": 3 },
+        { "code": "FENG 101", "name": "Mühendislik Kültürünün Temelleri", "grade": "BB", "ects": 4 },
+        { "code": "MATH 153", "name": "Genel Matematik I", "grade": "CB", "ects": 6 },
+        { "code": "SE 115", "name": "Programlamaya Giriş I", "grade": "AA", "ects": 6 }
+      ],
+      "2022_2023_Spring": [
+        { "code": "ENG 102", "name": "İngilizce de Akademik Beceriler II", "grade": "DC", "ects": 4 },
+        { "code": "SE 116", "name": "Programlamaya Giriş II", "grade": "AA", "ects": 6 },
+        { "code": "MATH 154", "name": "Genel Matematik II", "grade": "CC", "ects": 6 }
+      ],
+      "2023_2024_Fall": [
+        { "code": "CE 215", "name": "Bilgisayar Bilimleri için Ayrık Matematik", "grade": "CC", "ects": 6 },
+        { "code": "SE 209", "name": "Yazılım Mühendisliği Kavramları", "grade": "BB", "ects": 3 }
+      ]
+    },
+    "personal_info": {
+      "address": "MANSUROĞLU MAH. 286/8 SK. BAŞARI28 SİTESİ",
+      "city": "İZMİR",
+      "phone": "(533) 166-3639",
+      "email": "basar.kocabas@std.izmirekonomi.edu.tr"
+    },
+    "upcoming_exams": [
+      { "code": "SE 320", "name": "Midterm", "date": "Nov 15, 2025", "time": "10:30" }
+    ],
+    "announcements": [
+      "2025-2026 Güz Dönemi Ders Kayıtları Başlamıştır.",
+      "Staj Defteri Teslim Tarihi: 30 Ekim 2025"
+    ]
+  }
+}
