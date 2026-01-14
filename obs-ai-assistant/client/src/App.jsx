@@ -2,9 +2,47 @@ import React, { useState } from 'react';
 import { ChevronRight, Home, Calendar, FileText, ClipboardCheck, Users, Book, FileSignature, BarChart3, Database, Square } from 'lucide-react';
 import ChatWidget from './ChatWidget';
 
+// Import Pages
+import Dashboard from './pages/Dashboard';
+import OzlukBilgileri from './pages/OzlukBilgileri';
+import GenelBilgiler from './pages/GenelBilgiler';
+import AcilanBolumDersleri from './pages/AcilanBolumDersleri';
+import DersProgrami from './pages/DersProgrami';
+import Transkript from './pages/Transkript';
+import GenericPage from './pages/GenericPage';
+
 export default function IEUDashboard() {
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [showAlert, setShowAlert] = useState(true);
+  const [activePage, setActivePage] = useState('Dashboard');
+
+  const handleMenuClick = (subitem) => {
+    setActivePage(subitem);
+  };
+
+  const handleHomeClick = () => {
+    setActivePage('Dashboard');
+    setExpandedMenu(null);
+  };
+
+  const renderContent = () => {
+    switch (activePage) {
+      case 'Dashboard':
+        return <Dashboard />;
+      case 'Özlük Bilgileri':
+        return <OzlukBilgileri />;
+      case 'Genel Bilgiler':
+        return <GenelBilgiler />;
+      case 'Açılan Bölüm Dersleri':
+        return <AcilanBolumDersleri />;
+      case 'Ders Programı':
+        return <DersProgrami />;
+      case 'Transkript':
+        return <Transkript />;
+      default:
+        return <GenericPage title={activePage} />;
+    }
+  };
 
   const menuItems = [
     { 
@@ -122,7 +160,10 @@ export default function IEUDashboard() {
       <div className="w-64 bg-slate-900 text-white flex flex-col">
         {/* Logo */}
         <div className="p-6 border-b border-slate-700">
-          <div className="flex items-center gap-3">
+          <div 
+            className="flex items-center gap-3 cursor-pointer" 
+            onClick={handleHomeClick}
+          >
             <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-xs font-bold">
               İEÜ
             </div>
@@ -154,7 +195,12 @@ export default function IEUDashboard() {
                   {item.submenu.map((subitem, index) => (
                     <button
                       key={index}
-                      className="w-full text-left px-12 py-2 text-sm text-gray-300 hover:bg-slate-800 hover:text-white transition-colors flex items-center gap-2"
+                      onClick={() => handleMenuClick(subitem)}
+                      className={`w-full text-left px-12 py-2 text-sm transition-colors flex items-center gap-2 ${
+                        activePage === subitem 
+                          ? 'bg-slate-800 text-white font-medium' 
+                          : 'text-gray-300 hover:bg-slate-800 hover:text-white'
+                      }`}
                     >
                       <Square size={14} className="flex-shrink-0" />
                       <span>{subitem}</span>
@@ -178,7 +224,7 @@ export default function IEUDashboard() {
         <header className="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
           <div className="text-sm">© 2025 - 2026 Akademik Yılı Güz Dönemi</div>
           <div className="flex items-center gap-4">
-            <button className="hover:text-gray-300">
+            <button className="hover:text-gray-300" onClick={handleHomeClick}>
               <Home size={20} />
             </button>
             <button className="hover:text-gray-300 relative">
@@ -195,7 +241,7 @@ export default function IEUDashboard() {
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-y-auto relative">
           {/* Floating Alert Banner */}
-          {showAlert && (
+          {showAlert && activePage === 'Dashboard' && (
             <div className="mb-6">
               <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center justify-between">
                 <div className="text-sm">
@@ -211,66 +257,7 @@ export default function IEUDashboard() {
             </div>
           )}
 
-          {/* Dashboard Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-            {/* Academic Year Card */}
-            <div className="bg-blue-600 text-white rounded-lg shadow-lg p-6 h-40 flex items-center">
-              <div className="flex items-center gap-4 w-full">
-                <div className="text-4xl opacity-75 flex-shrink-0">
-                  <Book size={48} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold mb-2">Aktif Akademik Dönem Bilgileri</h3>
-                  <p className="text-sm">2025 - 2026 Akademik Yıl Güz Dönemi</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Advisor Card */}
-            <div className="bg-green-600 text-white rounded-lg shadow-lg p-6 h-40 flex items-center">
-              <div className="flex items-center gap-4 w-full">
-                <div className="text-4xl opacity-75 flex-shrink-0">
-                  <Users size={48} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold mb-2">Danışman Bilgileri</h3>
-                  <p className="text-sm font-medium">Prof. Dr. Sersin KUMOVA METİN</p>
-                  <p className="text-xs mt-1">sersin.kumova@ieu.edu.tr</p>
-                  <button className="mt-2 text-xs underline hover:no-underline">
-                    Detay
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Learning Card */}
-            <div className="bg-sky-500 text-white rounded-lg shadow-lg p-6 h-40 flex items-center">
-              <div className="flex items-center gap-4 w-full">
-                <div className="text-4xl opacity-75 flex-shrink-0">
-                  <FileText size={48} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold mb-2">Öğrenim Bilgileri</h3>
-                  <p className="text-sm">Mühendislik Fakültesi/Yazılım Mühendisliği (İÖ/İ)</p>
-                  <p className="text-xs mt-1">4. Sınıf</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Registration Date Card */}
-            <div className="bg-gray-600 text-white rounded-lg shadow-lg p-6 h-40 flex items-center">
-              <div className="flex items-center gap-4 w-full">
-                <div className="text-4xl opacity-75 flex-shrink-0">
-                  <Database size={48} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold mb-2">Kayıt Tarihi: 23.08.2022</h3>
-                  <p className="text-sm">AKNO —</p>
-                  <p className="text-xs mt-1">Detay</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {renderContent()}
         </main>
         <ChatWidget />
       </div>

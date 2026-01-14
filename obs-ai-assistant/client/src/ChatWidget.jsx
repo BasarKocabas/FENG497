@@ -35,7 +35,7 @@ const ChatWidget = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userMessage,
-          studentId: "20210602291" // Hardcoded for demo
+          studentId: "20220601048" // Updated to match data.json
         })
       });
 

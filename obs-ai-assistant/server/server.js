@@ -18,7 +18,7 @@ if (!API_KEY) {
   console.warn("Warning: GEMINI_API_KEY is not set in .env file.");
 }
 const genAI = new GoogleGenerativeAI(API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); // Updated to model mentioned by user
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" }); // Updated to model mentioned by user
 
 app.post('/api/chat', async (req, res) => {
   const { message, studentId } = req.body;
@@ -54,6 +54,7 @@ ${JSON.stringify(universityKnowledge)}
 "${message}"
 
 === INSTRUCTIONS ===
+- Respond in English by default, even if the context contains Turkish terms.
 - Answer based ONLY on the provided student context and knowledge base.
 - If asked "How to" do something (like register), use the "steps" from the Knowledge Base.
 - If the user asks about something not in the context, politely say you don't have that information.
@@ -71,7 +72,9 @@ ${JSON.stringify(universityKnowledge)}
     res.json({ answer: text });
   } catch (error) {
     console.error("Gemini API Error:", error);
-    if (error.status === 429) {
+    if (error.status === 403 && error.message.includes("leaked")) {
+      res.status(403).json({ answer: "The API key in use has been flagged as leaked and disabled. Please update the .env file with a new key." });
+    } else if (error.status === 429) {
       res.status(429).json({ answer: "The AI is currently busy (quota reached). Please try again in a minute." });
     } else {
       res.status(500).json({ answer: "I'm having trouble connecting to the AI service right now." });
